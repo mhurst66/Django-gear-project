@@ -16,6 +16,7 @@
 <section class="card-container">
   {% for gear in gears %}
     <div class="card">
+    <a href='/gears/{{ gear.id }}'>
       <div class="card-content">
         <div class="card-img-container">
             {% if gear.type == 'G' %}
@@ -44,6 +45,7 @@
         <p>Make: {{ gear.make }}</p>
         <p><small>{{ gear.description }}</small></p>
       </div>
+    </a>
     </div>
   {% endfor %}
 </section>

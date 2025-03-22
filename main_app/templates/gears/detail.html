@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/gears/gear-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="cat-container">
+  <div class="cat-img">
+    {% if gear.type == 'G' %}
+        <img 
+        src="{% static 'images/icons8-electric-guitar-96.png' %}"
+        alt="An electric guitar"
+        />
+    {% elif gear.type == 'B' %}
+        <img 
+        src="{% static 'images/icons8-bass-guitar-96.png' %}"
+        alt="A bass guitar"
+        />
+    {% elif gear.type == 'P' %}
+        <img 
+        src="{% static 'images/icons8-drum-kit-96.png' %}"
+        alt="A drum kit"
+        />
+    {% else %}
+        <img 
+        src="{% static 'images/icons8-band-96.png' %}"
+        alt="A microphone, guitar and bass headstock, and drum sticks"
+        />
+    {% endif %}
+  </div>
+  <div class="cat-details">
+    <h1>{{ gear.model }}</h1>
+    <p>Make: {{ gear.make }}</p>
+    <p><small>{{ gear.description }}</small></p>
+  </div>
+</section>
+{% endblock %}
