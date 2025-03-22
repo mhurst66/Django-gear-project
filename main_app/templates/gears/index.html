@@ -18,17 +18,17 @@
     <div class="card">
       <div class="card-content">
         <div class="card-img-container">
-            {% comment %} {% if gear.type = 'Guitar' %}
+            {% if gear.type == 'G' %}
                 <img 
                 src="{% static 'images/icons8-electric-guitar-96.png' %}"
                 alt="An electric guitar"
                 />
-            {% elif gear.type = 'Bass' %}
+            {% elif gear.type == 'B' %}
                 <img 
                 src="{% static 'images/icons8-bass-guitar-96.png' %}"
                 alt="A bass guitar"
                 />
-            {% elif gear.type = 'Percussion' %}
+            {% elif gear.type == 'P' %}
                 <img 
                 src="{% static 'images/icons8-drum-kit-96.png' %}"
                 alt="A drum kit"
@@ -38,11 +38,7 @@
                 src="{% static 'images/icons8-band-96.png' %}"
                 alt="A microphone, guitar and bass headstock, and drum sticks"
                 />
-          {% endif %} {% endcomment %}
-          <img
-          src="{% static 'images/icons8-band-96.png' %}"
-          alt="A microphone, guitar and bass headstock, and drum sticks"
-          />
+          {% endif %}
         </div>
         <h2 class="card-title">{{ gear.model }}</h2>
         <p>Make: {{ gear.make }}</p>
