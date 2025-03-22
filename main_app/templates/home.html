@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+{% block content %}
+
+<section class="logo-container">
+  <div class="cat-container">
+    <img src="{% static 'images/BeLoudLogo.jpg' %}" alt="Alfred Be Loud logo" />
+  </div>
+  <img src="{% static 'images/header-logo.png' %}" alt="Text Reads: Alfred Be Loud Gear Vault" />
+</section>
+
+{% endblock %}
