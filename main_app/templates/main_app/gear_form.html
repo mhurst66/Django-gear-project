@@ -1,11 +1,16 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/gears/gear-detail.css' %}" />
-{% endblock %} 
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock head %}
 {% block content %}
-<section class="cat-container">
-  <div class="cat-img">
+
+<div class="page-header">
+    {% if object %}
+        <h1>Edit {{ object.model }}</h1>
+    {% else %}
+        <h1>Add Gear</h1>
+    {% endif %}
     {% if gear.type == 'G' %}
         <img 
         src="{% static 'images/icons8-electric-guitar-96.png' %}"
@@ -32,17 +37,14 @@
         alt="A microphone, guitar and bass headstock, and drum sticks"
         />
     {% endif %}
-  </div>
-  <div class="cat-details">
-    <h1>{{ gear.model }}</h1>
-    <h2>Played by {{ username }}!</h2>
-    <p>Make: {{ gear.make }}</p>
-    <p><small>{{ gear.description }}</small></p>
+</div>
 
-    <div class="cat-actions">
-        <a href="{% url 'gear-update' gear.id %}" class="btn warn">Edit</a>
-        <a href="{% url 'gear-delete' gear.id %}" class="btn danger">Delete</a>
-    </div>
-  </div>
-</section>
-{% endblock %}
+<form action="" method="post" class="form-container">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button type="submit" class="btn submit">Submit!</button>
+</form>
+
+{% endblock content %}

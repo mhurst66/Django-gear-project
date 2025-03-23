@@ -21,14 +21,31 @@
       </div>
       <nav>
         <ul>
-          <li><a href="/gear">All Gear</a></li>
-          <li><a href="/about">About</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'gear-index' %}">All Gear</a></li>
+            <li><a href="{% url 'user-index' %}">My Gear</a></li>
+            <li><a href="{% url 'gear-create' %}">Add Gear</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li>
+              <form id="logout-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+              </form>
+            </li>
+          {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>
     <main>
      {% block content %} 
      {% endblock %}
-     </main>
+    </main>
+    <footer>
+      All icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+    </footer>
   </body>
 </html>
